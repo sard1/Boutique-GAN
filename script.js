@@ -54,6 +54,8 @@ let products = [
     },
 ];
 
+let cart = [];
+
 let productContainer= document.querySelector(".main-item-container");
  
 
@@ -62,6 +64,7 @@ let display =()=>{
     products.forEach((product, index)=>{
         let option = document.createElement("div");
         option.classList.add("option");
+        option.setAttribute("class", "optionStyle")
         let name = document.createElement("p");
         name.innerText = product.name;
         let price = document.createElement("p");
@@ -69,12 +72,69 @@ let display =()=>{
         let picName= document.createElement("img")
         let addToCart = document.createElement("button");
         addToCart.innerText="Add To Cart";
+        addToCart.classList.add("add");
         addToCart.setAttribute("data-index", index);
+
+
         // will work here//
         picName.setAttribute("src", product.picName)
+        
         option.append(picName,name,price,addToCart);
         productContainer.append(option);
     });
 };
 
 display();
+
+let cartContainer = document.querySelector(".cart-container");
+
+
+let cartDisplay =()=>{
+    cartContainer.innerHTML="";
+    cart.forEach((cart)=>{
+       let itemContainer = document.createElement("div")
+       let itemName = document.createElement("p");
+       itemName.innerText = cart.name;
+       let itemPrice = document.createElement("p");
+       itemPrice.innerText = cart.price;
+       let itemPicName = document.createElement("img");
+       itemPicName.setAttribute("src", cart.picName)
+       let deleteButton = document.createElement("button");
+        deleteButton.innerText = "X";
+        deleteButton.classList.add("delete");
+        //deleteButton.setAttribute("data-index", index);
+       itemContainer.append(itemName, itemPrice, itemPicName, deleteButton); 
+       cartContainer.append(itemContainer);
+    });
+};
+
+productContainer.addEventListener("click", (e)=>{
+    if (e.target.classList.contains("add")){
+        let index = e.target.getAttribute("data-index");
+        cart.push(products[index]);
+        console.log(cart);
+        cartDisplay();
+    }
+});
+
+cartContainer.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("delete")){
+        let index = e.target.getAttribute("data-index");
+        cart.splice(index,1);
+        console.log(cart);
+        cartDisplay();
+    }
+})
+
+
+
+
+//sidenav Cart
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }

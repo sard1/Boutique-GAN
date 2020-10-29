@@ -7,11 +7,39 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="header">GC SHOESTORE</header>
+    <header class="header">
+      <div class="head-container">
+        <!-- retrofit with eventListener! -->
+        <img
+          class="header-icons"
+          src="assets/cart.svg"
+          alt="cart"
+          onclick="openNav()"
+        />
+        <p>GC SHOESTORE</p>
+        <img class="header-icons" src="assets/home_icon.svg" alt="home" />
+      </div>
+    </header>
     <button class="cart hide"></button>
     <main>
       <h1>"Best Sellers"</h1>
       <div class="main-item-container"></div>
+
+      <div id="mySidenav" class="sidenav">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <div class="cart-container"></div>
+
+        <p>subtotal:</p>
+
+        <img
+          class="side-nav-icons"
+          src="assets/credit_card.svg"
+          alt="creditcard"
+        />
+        <p>or</p>
+        <img class="side-nav-icons" src="assets/cash.svg" alt="cash" />
+      </div>
     </main>
     <footer>© Alejandra Roel © Joseph Sardashti © Kristofer Juncaj</footer>
     <script src="script.js"></script>
