@@ -74,8 +74,6 @@ let display = () => {
         addToCart.innerText = "Add To Cart";
         addToCart.classList.add("add");
         addToCart.setAttribute("data-index", index);
-
-
         // will work here//
         picName.setAttribute("src", product.picName)
 
@@ -87,37 +85,32 @@ let display = () => {
 display();
 
 let cartContainer = document.querySelector(".cart-container");
-let subtotal = 0.00;
 let subtotalP = document.querySelector(".subtotal-p")
+
 
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
-    cart.forEach((cart) => {
+    let subtotal = 0.00;
+    cart.forEach((item, index) => {
         let itemContainer = document.createElement("div")
         let itemName = document.createElement("p");
-        itemName.innerText = cart.name;
+        itemName.innerText = item.name;
         let itemPrice = document.createElement("p");
-
-        // itemPrice.setAttribute("data-price", cart.price)
-        // let price = parseFloat(cart.getAttribute("data-price"));
-
-        itemPrice.innerText = cart.price;
+        itemPrice.innerText = item.price;
         let itemPicName = document.createElement("img");
-        itemPicName.setAttribute("src", cart.picName)
+        itemPicName.setAttribute("src", item.picName)
         let deleteButton = document.createElement("button");
         deleteButton.innerText = "X";
         deleteButton.classList.add("delete");
-        //deleteButton.setAttribute("data-index", index);
+        deleteButton.setAttribute("data-index", index);
         itemContainer.append(itemName, itemPrice, itemPicName, deleteButton);
-        cartContainer.append(itemContainer);
-
-        // let subtotal = 0.00;
-        // subtotal += price;
-        // subtotalP.innerText = subtotal;
-
+        cartContainer.append(itemContainer);     
+        
+        subtotal += item.price;
+        
     });
-
+    subtotalP.innerText = subtotal;
 };
 
 
