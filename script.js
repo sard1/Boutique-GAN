@@ -56,6 +56,7 @@ let products = [
 
 let cart = [];
 
+
 let productContainer = document.querySelector(".main-item-container");
 
 
@@ -86,12 +87,18 @@ display();
 
 let cartContainer = document.querySelector(".cart-container");
 let subtotalP = document.querySelector(".subtotal-p")
+let taxP = document.querySelector(".tax-p");
+let totalP = document.querySelector(".total-p")
+let formContainer = document.querySelector(".form-container");
+let moneyForm = document.querySelector(".money-form");
+let sideNav = document.querySelector(".sidenav");
 
-
+let cashContainer = document.querySelector(".cash-container");
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
     let subtotal = 0.00;
+    
     cart.forEach((item, index) => {
         let itemContainer = document.createElement("div")
         let itemName = document.createElement("p");
@@ -108,9 +115,14 @@ let cartDisplay = () => {
         cartContainer.append(itemContainer);     
         
         subtotal += item.price;
-        
     });
-    subtotalP.innerText = subtotal;
+
+    let total = 0.00;
+    subtotalP.innerText = `subtotal:$${subtotal}`;
+    let tax = subtotal *.06;
+    taxP.innerText= `tax:$${tax}`;
+    total = subtotal += tax;
+    totalP.innerText= `total:$${total}`;
 };
 
 
@@ -118,38 +130,38 @@ productContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("add")) {
         let index = e.target.getAttribute("data-index");
         cart.push(products[index]);
-        // let cost = parseFloat(index.getAttribute("price"));
-        // subtotal += cost;
-        // subtotalP.innerText = subtotal;
         console.log(cart);
         cartDisplay();
     }
 });
 
 
+let creditCheckoutDisplay = ()=>{
+    formContainer.classList.remove("hide")
+}
+
+let cashCheckoutDisplay = ()=>{
+    cashContainer.classList.remove("hide")
+}
 
 
-cartContainer.addEventListener("click", (e) => {
+
+sideNav.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete")) {
         let index = e.target.getAttribute("data-index");
         cart.splice(index, 1);
         console.log(cart);
         cartDisplay();
+    } else if(e.target.classList.contains("credit")){
+        closeNav();
+        creditCheckoutDisplay();
+    } else if(e.target.classList.contains("cash")){
+        closeNav();
+        cashCheckoutDisplay();
     }
-})
+});
 
 
-
-// vendingButtons.forEach((button) => {
-//     button.addEventListener("click", () => {
-//         let price = parseFloat(button.getAttribute("data-price"));
-
-//         total += price;
-
-//         totalDisplay.innerText = (`Your total is: $${total}.00`);
-
-//     });
-// });
 
 
 
