@@ -1,85 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POS Group Project</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="head-container">
-        <!-- retrofit with eventListener! -->
-        <img
-          class="header-icons"
-          src="assets/cart.svg"
-          alt="cart"
-          onclick="openNav()"
-        />
-        <p>GC SHOESTORE</p>
-        <img class="header-icons" src="assets/home_icon.svg" alt="home" />
-      </div>
-    </header>
-    <button class="cart hide"></button>
-    <main class="main1">
-      <h1 class="header1">"Best Sellers"</h1>
-      <div class="main-item-container"></div>
-      <div class="form-container hide popup">
-        <form class="money-form">
-          <div class="credit-item-container"></div>
-          <label for="Name">Name</label>
-          <input type="text" name="name" id="name" placeholder="Full Name" />
-          <label for="card">CC #</label>
-          <input type="number" name="card" id="card" placeholder="CC #" />
-          <label for="expiration">Exp. Date</label>
-          <input type="date" name="expiration" id="expiration" />
-          <label for="cvv">CVV</label>
-          <input type="number" name="cvv" id="cvv" placeholder="CVV" />
-          <button>Submit</button>
-          <!-- <button class = "close-form">X</button> -->
-        </form>
-      </div>
-      <div class="cash-container hide popup">
-        
-        
-        <div class="cash-form money-form">
-          <h2>CASH</h2>
-          <div class="cash-total"></div>
-          <p class="subtotal-cash-p">subtotal:</p>
-          <p class="tax-cash-p">tax:</p>
-          <p class="total-cash-p">total:</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POS Group Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="head-container">
+      <!-- retrofit with eventListener! -->
+      <img class="header-icons" src="assets/cart.svg" alt="cart" onclick="openNav()" />
+      <p>GC SHOESTORE</p>
+      <img class="header-icons" src="assets/home_icon.svg" alt="home" />
+    </div>
+  </header>
+  <button class="cart hide"></button>
+  <main class="main1">
+    <h1 class="header1">"Best Sellers"</h1>
+    <div class="main-item-container"></div>
+    <div class="form-container hide popup">
+      <form class="money-form">
+        <div class="credit-item-container"></div>
+        <label for="Name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Full Name" />
+        <label for="card">CC #</label>
+        <input type="number" name="card" id="card" placeholder="CC #" />
+        <label for="expiration">Exp. Date</label>
+        <input type="date" name="expiration" id="expiration" />
+        <label for="cvv">CVV</label>
+        <input type="number" name="cvv" id="cvv" placeholder="CVV" />
+        <button>Submit</button>
+        <!-- <button class = "close-form">X</button> -->
+      </form>
+    </div>
+    <div class="cash-container hide popup">
+
+
+      <div class="cash-form money-form">
+        <h2>CASH</h2>
+        <div class="cash-total"></div>
+        <p class="subtotal-cash-p">subtotal:</p>
+        <p class="tax-cash-p">tax:</p>
+        <p class="total-cash-p" id="tcp">total:</p>
+        <form class="cash-payment-form">
           <label for="cash-amount">Enter Cash:</label>
-          <input
-            type="number"
-            name="cash-amount"
-            id="cash-amount"
-            placeholder="Amount Tendered"
-          />
+
+          <input type="input" name="cash-amount" id="cash-amount" placeholder="Amount Tendered" />
           <p class="change-cash-p">change:</p>
           <button>Calculate</button>
-        </div>
+        </form>
       </div>
+    </div>
 
-      <div id="mySidenav" class="sidenav">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="mySidenav" class="sidenav">
+      <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <div class="cart-container"></div>
+      <div class="cart-container"></div>
 
-        <p class="subtotal-p">subtotal:</p>
-        <p class="tax-p">tax:</p>
-        <p class="total-p"></p>
+      <p class="subtotal-p">subtotal:</p>
+      <p class="tax-p">tax:</p>
+      <p class="total-p"></p>
 
-        <img
-          class="side-nav-icons credit"
-          src="assets/credit_card.svg"
-          alt="creditcard"
-        />
-        <p>or</p>
-        <img class="side-nav-icons cash" src="assets/cash.svg" alt="cash" />
-      </div>
-    </main>
-    <footer>©AlejandraRoel ©JosephSardashti ©KristoferJuncaj</footer>
-    <script src="script.js"></script>
-  </body>
+      <img class="side-nav-icons credit" src="assets/credit_card.svg" alt="creditcard" />
+      <p>or</p>
+      <img class="side-nav-icons cash" src="assets/cash.svg" alt="cash" />
+    </div>
+  </main>
+  <footer>©AlejandraRoel ©JosephSardashti ©KristoferJuncaj</footer>
+  <script src="script.js"></script>
+</body>
+
 </html>
