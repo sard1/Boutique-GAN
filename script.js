@@ -101,11 +101,12 @@ let subtotalCashP = document.querySelector(".subtotal-cash-p")
 let taxCashP = document.querySelector(".tax-cash-p");
 let totalCashP = document.querySelector(".total-cash-p");
 let changeCashP = document.querySelector(".change-cash-p");
+let cashPaymentForm = document.querySelector(".cash-payment-form");
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
     let subtotal = 0.00;
-    
+
     cart.forEach((item, index) => {
         let itemContainer = document.createElement("div")
         let itemName = document.createElement("p");
@@ -119,21 +120,25 @@ let cartDisplay = () => {
         deleteButton.classList.add("delete");
         deleteButton.setAttribute("data-index", index);
         itemContainer.append(itemName, itemPrice, itemPicName, deleteButton);
-        cartContainer.append(itemContainer);     
-        
+        cartContainer.append(itemContainer);
+
         subtotal += item.price;
     });
 
     let total = 0.00;
     subtotalP.innerText = `subtotal:$${subtotal}`;
     subtotalCashP.innerText = `subtotal:$${subtotal}`;
-    let tax = subtotal *.06;
-    taxP.innerText= `tax:$${tax}`;
-    taxCashP.innerText =`tax:$${tax}`;
+    let tax = subtotal * .06;
+    taxP.innerText = `tax:$${tax}`;
+    taxCashP.innerText = `tax:$${tax}`;
     total = subtotal += tax;
-    totalP.innerText= `total:$${total}`;
-    totalCashP.innerText= `total:$${total}`;
+    totalP.innerText = `total:$${total}`;
+    totalCashP.innerText = `total:$${total}`;
+
+
 };
+
+
 
 
 productContainer.addEventListener("click", (e) => {
@@ -148,39 +153,59 @@ productContainer.addEventListener("click", (e) => {
 });
 
 
-let creditCheckoutDisplay = ()=>{
+let creditCheckoutDisplay = () => {
     formContainer.classList.remove("hide")
-        creditCheckout.forEach((item) => {
-            let creditName = document.createElement("p");
-            creditName.innerText = item.name;
-            let creditPrice = document.createElement("p");
-            creditPrice = item.price;
-            creditItemContainer.append(creditName, creditPrice);
-        })
-        let closeFormBtn = document.createElement("button")
-            closeFormBtn.innerText = "X";
-            closeFormBtn.classList.add("close-form") 
-            formContainer.append(closeFormBtn);
+    creditCheckout.forEach((item) => {
+        let creditName = document.createElement("p");
+        creditName.innerText = item.name;
+        let creditPrice = document.createElement("p");
+        creditPrice = item.price;
+        creditItemContainer.append(creditName, creditPrice);
+    })
+    let closeFormBtn = document.createElement("button")
+    closeFormBtn.innerText = "X";
+    closeFormBtn.classList.add("close-form")
+    formContainer.append(closeFormBtn);
 }
 
 
 
-let cashCheckoutDisplay = ()=>{
+let cashCheckoutDisplay = () => {
     //cashContainer.innerHTML = "";
     cashContainer.classList.remove("hide")
-        cashCheckout.forEach((item)=>{
-            let cashPrice = document.createElement("p")
-            cashPrice = item.price;
-            let cashName= document.createElement("p");
-            cashName.innerText = item.name;
+    cashCheckout.forEach((item) => {
+        let cashPrice = document.createElement("p")
+        cashPrice = item.price;
+        let cashName = document.createElement("p");
+        cashName.innerText = item.name;
         // let cartSubtotal = document.createElement("p")
         // cartSubtotal.innerText = subtotal;
-            cashTotal.append(cashName, cashPrice);
-            console.dir(cashPrice);
+        cashTotal.append(cashName, cashPrice);
+        console.dir(cashPrice);
     });
 
+    let closeFormBtn = document.createElement("button")
+    closeFormBtn.innerText = "X";
+    closeFormBtn.classList.add("close-form")
+    cashContainer.append(closeFormBtn);
 };
 
+// document.getElementsByClassName(“total-cash-p”).value = 
+
+cashPaymentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let snapshot = new FormData(cashPaymentForm);
+    let amountTendered = snapshot.get("cash-amount");
+    console.log(amountTendered);
+    let totalCash = document.getElementById("tcp").textContent;
+    let totalCashNum = totalCash.replace("total:$", "");
+    console.log(totalCashNum);
+    let change = amountTendered - totalCashNum;
+
+    changeCashP.innerText = `Change: $${change}`;
+
+
+});
 
 
 
@@ -191,11 +216,11 @@ sideNav.addEventListener("click", (e) => {
         cart.splice(index, 1);
         console.log(cart);
         cartDisplay();
-    } else if(e.target.classList.contains("credit")){
+    } else if (e.target.classList.contains("credit")) {
         closeNav();
         creditCheckoutDisplay();
         console.log(creditCheckout);
-    } else if(e.target.classList.contains("cash")){
+    } else if (e.target.classList.contains("cash")) {
         // let index = e.target.getAttribute("data-index");
         // cashCheckout.push(products[index]);
         closeNav();
@@ -207,6 +232,7 @@ sideNav.addEventListener("click", (e) => {
 main.addEventListener("click", (e) => {
     if (e.target.classList.contains("close-form")) {
         formContainer.classList.add("hide")
+        cashContainer.classList.add("hide")
     }
 })
 
