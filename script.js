@@ -96,7 +96,11 @@ let sideNav = document.querySelector(".sidenav");
 let cashContainer = document.querySelector(".cash-container");
 let creditItemContainer = document.querySelector(".credit-item-container")
 let main = document.querySelector(".main1")
-
+let cashTotal = document.querySelector(".cash-total")
+let subtotalCashP = document.querySelector(".subtotal-cash-p")
+let taxCashP = document.querySelector(".tax-cash-p");
+let totalCashP = document.querySelector(".total-cash-p");
+let changeCashP = document.querySelector(".change-cash-p");
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
@@ -122,10 +126,13 @@ let cartDisplay = () => {
 
     let total = 0.00;
     subtotalP.innerText = `subtotal:$${subtotal}`;
+    subtotalCashP.innerText = `subtotal:$${subtotal}`;
     let tax = subtotal *.06;
     taxP.innerText= `tax:$${tax}`;
+    taxCashP.innerText =`tax:$${tax}`;
     total = subtotal += tax;
     totalP.innerText= `total:$${total}`;
+    totalCashP.innerText= `total:$${total}`;
 };
 
 
@@ -162,15 +169,17 @@ let cashCheckoutDisplay = ()=>{
     //cashContainer.innerHTML = "";
     cashContainer.classList.remove("hide")
         cashCheckout.forEach((item)=>{
-            let cashName = document.createElement("p")
+            let cashPrice = document.createElement("p")
+            cashPrice = item.price;
+            let cashName= document.createElement("p");
             cashName.innerText = item.name;
-            console.log = (item.name)
         // let cartSubtotal = document.createElement("p")
         // cartSubtotal.innerText = subtotal;
-            moneyForm.append(cashName);
+            cashTotal.append(cashName, cashPrice);
+            console.dir(cashPrice);
     });
 
-}
+};
 
 
 
@@ -187,11 +196,11 @@ sideNav.addEventListener("click", (e) => {
         creditCheckoutDisplay();
         console.log(creditCheckout);
     } else if(e.target.classList.contains("cash")){
-        let index = e.target.getAttribute("data-index");
-        cashCheckout.push(products[index]);
+        // let index = e.target.getAttribute("data-index");
+        // cashCheckout.push(products[index]);
         closeNav();
         cashCheckoutDisplay();
-        console.log(cashCheckout);
+        // console.log(cashCheckout);
     }
 });
 
