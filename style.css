@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 .header-icons {
@@ -15,9 +17,10 @@ body {
   width: 100%;
   background-color: gray;
   color: azure;
+  top: 0;
 }
 
-.h1 {
+.header1 {
   text-align: center;
   margin-top: 50px;
 }
@@ -74,45 +77,44 @@ body {
   margin-left: 50px;
 }
 
-
-.popup{
+.popup {
   position: fixed;
   width: 100%;
   top: 0;
   display: flex;
-  z-index:2;
+  z-index: 2;
 }
 
-.form-container{
+.form-container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.63);
   width: 100%;
-  height: 60%;
+  height: 100%;
 }
 
-.money-form{
+.money-form {
   background-color: white;
   width: 50%;
   height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   border-radius: 25%;
 }
 
-.cash-container{
+.cash-container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.63);
   width: 100%;
-  height: 60%;
+  height: 100%;
 }
 
-.hide{
+.hide {
   display: none;
 }
 @media screen and (max-height: 450px) {

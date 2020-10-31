@@ -55,28 +55,29 @@ let products = [
 ];
 
 let cart = [];
-
+let cashCheckout = [];
+let creditCheckout = [];
 
 let productContainer = document.querySelector(".main-item-container");
 
 
 let display = () => {
     productContainer.innerHTML = "";
-    products.forEach((product, index) => {
+    products.forEach((item, index) => {
         let option = document.createElement("div");
         option.classList.add("option");
         option.setAttribute("class", "optionStyle")
         let name = document.createElement("p");
-        name.innerText = product.name;
+        name.innerText = item.name;
         let price = document.createElement("p");
-        price.innerText = product.price;
+        price.innerText = item.price;
         let picName = document.createElement("img")
         let addToCart = document.createElement("button");
         addToCart.innerText = "Add To Cart";
         addToCart.classList.add("add");
         addToCart.setAttribute("data-index", index);
         // will work here//
-        picName.setAttribute("src", product.picName)
+        picName.setAttribute("src", item.picName)
 
         option.append(picName, name, price, addToCart);
         productContainer.append(option);
@@ -92,8 +93,10 @@ let totalP = document.querySelector(".total-p")
 let formContainer = document.querySelector(".form-container");
 let moneyForm = document.querySelector(".money-form");
 let sideNav = document.querySelector(".sidenav");
-
 let cashContainer = document.querySelector(".cash-container");
+let creditItemContainer = document.querySelector(".credit-item-container")
+let main = document.querySelector(".main1")
+
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
@@ -130,6 +133,8 @@ productContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("add")) {
         let index = e.target.getAttribute("data-index");
         cart.push(products[index]);
+        cashCheckout.push(products[index]);
+        creditCheckout.push(products[index]);
         console.log(cart);
         cartDisplay();
     }
@@ -138,11 +143,36 @@ productContainer.addEventListener("click", (e) => {
 
 let creditCheckoutDisplay = ()=>{
     formContainer.classList.remove("hide")
+        creditCheckout.forEach((item) => {
+            let creditName = document.createElement("p");
+            creditName.innerText = item.name;
+            let creditPrice = document.createElement("p");
+            creditPrice = item.price;
+            creditItemContainer.append(creditName, creditPrice);
+        })
+        let closeFormBtn = document.createElement("button")
+            closeFormBtn.innerText = "X";
+            closeFormBtn.classList.add("close-form") 
+            formContainer.append(closeFormBtn);
 }
 
+
+
 let cashCheckoutDisplay = ()=>{
+    //cashContainer.innerHTML = "";
     cashContainer.classList.remove("hide")
+        cashCheckout.forEach((item)=>{
+            let cashName = document.createElement("p")
+            cashName.innerText = item.name;
+            console.log = (item.name)
+        // let cartSubtotal = document.createElement("p")
+        // cartSubtotal.innerText = subtotal;
+            moneyForm.append(cashName);
+    });
+
 }
+
+
 
 
 
@@ -155,13 +185,21 @@ sideNav.addEventListener("click", (e) => {
     } else if(e.target.classList.contains("credit")){
         closeNav();
         creditCheckoutDisplay();
+        console.log(creditCheckout);
     } else if(e.target.classList.contains("cash")){
+        let index = e.target.getAttribute("data-index");
+        cashCheckout.push(products[index]);
         closeNav();
         cashCheckoutDisplay();
+        console.log(cashCheckout);
     }
 });
 
-
+main.addEventListener("click", (e) => {
+    if (e.target.classList.contains("close-form")) {
+        formContainer.classList.add("hide")
+    }
+})
 
 
 
