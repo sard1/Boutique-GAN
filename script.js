@@ -122,7 +122,9 @@ let receiptButtonCredit = document.querySelector(".receipt-button-credit")
 let receiptContainer = document.querySelector(".receipt-container")
 let receiptItems = document.querySelector(".receipt-items")
 let changeReceiptP = document.querySelector(".change-receipt-p")
-
+let stp = document.querySelector(".stp")
+let stp1 = document.querySelector(".stp1")
+let stp2 = document.querySelector(".stp2")
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
@@ -130,6 +132,7 @@ let cartDisplay = () => {
 
     cart.forEach((item, index) => {
         let itemContainer = document.createElement("div")
+        itemContainer.classList.add("cartStyle")
         let itemName = document.createElement("p");
         itemName.innerText = item.name;
         let itemPrice = document.createElement("p");
@@ -149,16 +152,17 @@ let cartDisplay = () => {
     });
 
     let total = 0.00;
-    subtotalP.innerText = `subtotal:$${subtotal}`;
-    subtotalCashP.innerText = `subtotal:$${subtotal}`;
     let tax = subtotal * .06;
+    subtotalP.innerText = `subtotal:$${subtotal}`;
     taxP.innerText = `tax:$${tax}`;
-    taxCashP.innerText = `tax:$${tax}`;
     total = subtotal += tax;
     totalP.innerText = `total:$${total}`;
+    subtotalCashP.innerText = `subtotal:$${subtotal}`;
+    taxCashP.innerText = `tax:$${tax}`;
     totalCashP.innerText = `total:$${total}`;
-    
-
+    stp.innerText= `subtotal:$${subtotal}`;
+    stp1.innerText= `tax:$ ${tax}`;
+    stp2.innerText= `total:$ ${total}`;
 };
 
 
@@ -187,11 +191,6 @@ let creditCheckoutDisplay = () => {
         creditPrice = item.price;
         creditItemContainer.append(creditName, creditPrice);
     })
-    let closeFormBtn = document.createElement("button")
-    closeFormBtn.innerText = "X";
-    closeFormBtn.classList.add("close-form")
-    formContainer.append(closeFormBtn);
-    
 }
 
 
@@ -210,10 +209,6 @@ let cashCheckoutDisplay = () => {
         console.dir(cashPrice);
     });
 
-    let closeFormBtn = document.createElement("button")
-    closeFormBtn.innerText = "X";
-    closeFormBtn.classList.add("close-form")
-    cashContainer.append(closeFormBtn);
 };
 
 
@@ -226,10 +221,10 @@ let receiptDisplay = () => {
         receiptItems.append(receiptName, receiptPrice);
         // moneyForm.append(receiptItems);
     })
-    let closeFormBtn = document.createElement("button")
-    closeFormBtn.innerText = "X";
-    closeFormBtn.classList.add("close-form")
-    receiptContainer.append(closeFormBtn);
+    // let closeFormBtn = document.createElement("button")
+    // closeFormBtn.innerText = "X";
+    // closeFormBtn.classList.add("close-form")
+    // receiptContainer.append(closeFormBtn);
 }
 
 
@@ -242,7 +237,6 @@ main.addEventListener("submit", (e) => {
     let totalCashNum = totalCash.replace("total:$", "");
     console.log(totalCashNum);
     let change = amountTendered - totalCashNum;
-
     changeCashP.innerText = `Change: $${change}`;
     changeReceiptP.innerText = `Change: $${change}`;
     receiptButton.classList.remove("hide");
@@ -279,12 +273,20 @@ sideNav.addEventListener("click", (e) => {
     }
 });
 
+function refreshPage(){
+    window.location.reload();
+}
+
+
 main.addEventListener("click", (e) => {
-    if (e.target.classList.contains("close-form")) {
+    if(e.target.classList.contains("refresh-page")){
+        refreshPage();
+    }else if (e.target.classList.contains("close-form")) {
         formContainer.classList.add("hide")
         cashContainer.classList.add("hide")
+        receiptContainer.classList.add("hide")
     } else if(e.target.classList.contains("receipt-button-credit" )){
-        
+        changeReceiptP.classList.add("hide")
         formContainer.classList.add("hide");
         receiptContainer.classList.remove("hide");
         receiptDisplay();
@@ -292,6 +294,8 @@ main.addEventListener("click", (e) => {
         cashContainer.classList.add("hide");
         receiptContainer.classList.remove("hide");
         receiptDisplay();
+    }else if(e.target.classList.contains("refresh-page")){
+        refreshPage();
     }
 })
 
@@ -301,15 +305,15 @@ main.addEventListener("click", (e) => {
 //sidenav Cart
 
 //experimenting with animation--when you click add to cart, cart icon wiggles
-wiggleCart = document.getElementById("header-cart")
+// wiggleCart = document.getElementById("header-cart")
 
-wiggleCart.addEventListener("click", function(e){
-    if(e.target.classList.contains("add"))
-    e.preventDefault;
-    wiggleCart.classList.remove("wiggle")
-    void wiggleCart.OffsetWidth;
-    wiggleCart.classList.add("wiggle")
-})
+// wiggleCart.addEventListener("click", function(e){
+//     if(e.target.classList.contains("add"))
+//     e.preventDefault;
+//     wiggleCart.classList.remove("wiggle")
+//     void wiggleCart.OffsetWidth;
+//     wiggleCart.classList.add("wiggle")
+// })
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";

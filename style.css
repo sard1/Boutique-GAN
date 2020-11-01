@@ -1,7 +1,13 @@
+/* resets */
+p{
+  padding: 2px;
+  margin: 2px;
+}
+
+
 body {
   margin: 0;
   padding: 0;
-  max-width: 1000px;
 }
 
 .header-items {
@@ -12,9 +18,14 @@ body {
   margin: 10px 0px;
 }
 
+.main1{
+  display: flex;
+}
+
 .side-nav-icons {
   height: 30px;
 }
+
 .header {
   position: fixed;
   width: 100%;
@@ -26,7 +37,7 @@ body {
 
 .header1 {
   text-align: center;
-  margin-top: 50px;
+  margin: 70px 50px;
   font-family: "Cutive Mono", monospace;
 }
 
@@ -45,8 +56,19 @@ body {
   /* max-width: 1000px; */
 }
 
+.page-container{
+  max-width: 1000px;
+  margin: auto;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+
+}
+
 .optionStyle {
-  border: gray 1px dotted;
+  border: white 1px solid;
   width: 200px;
   font-family: "Cutive Mono", monospace;
   animation: fadeInAnimation ease 3s;
@@ -58,11 +80,23 @@ body {
   align-content: center;
   justify-content: center;
   z-index: 0;
+  border-radius: 2%;
+  margin-bottom: 20px;
+}
+
+.optionStyle:hover{
+  border: 1px solid black;
 }
 
 .product-pic {
   height: 180px;
   width: auto;
+  border-radius: 20px;
+}
+
+.cart-style{
+  color: white;
+ 
 }
 
 @keyframes fadeInAnimation {
@@ -84,7 +118,7 @@ body {
   right: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgba(163, 160, 160, 1);
+  background-color: rgb(142, 173, 207);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -95,7 +129,7 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: black;
   display: block;
   transition: 0.3s;
 }
@@ -140,6 +174,7 @@ body {
   background-color: rgba(128, 128, 128, 0.63);
   width: 100%;
   height: 100%;
+  margin: auto;
 }
 
 .money-form {
@@ -151,6 +186,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 10%;
+  padding: 20px;
 }
 
 .cash-container {
@@ -162,6 +198,9 @@ body {
   height: 100%;
 }
 
+.credit-item-container {
+  overflow: scroll;
+}
 /* .receipt-div {
   background-color: white;
   width: 50%;
@@ -172,6 +211,12 @@ body {
   justify-content: center;
   border-radius: 25%;
 } */
+
+.cart-container{
+  display: flex;
+ flex-direction: column;
+ align-items:center;
+}
 
 .hide {
   display: none;
@@ -226,6 +271,8 @@ body {
   padding: 0px 15px;
   font-size: 12px;
 }
+
+
 
 @media screen and (max-width: 768px) {
   .sidenav {
