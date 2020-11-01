@@ -3,29 +3,29 @@
 
 let products = [
     {
-        name: "Product1",
+        name: "Ripple Gator",
         price: 150.00,
-        picName: "",
+        picName: "assets/ripple-gator.jpeg",
     },
     {
-        name: "Product2",
+        name: "Pearlish Reversi",
         price: 50.00,
-        picName: "",
+        picName: "assets/pearlish-reversi.jpeg",
     },
     {
-        name: "Product3",
+        name: "Crawling Oceans",
         price: 75.00,
-        picName: "",
+        picName: "assets/crawling-oceans.jpeg",
     },
     {
-        name: "Product4",
+        name: "Irredescent Trainer",
         price: 100.00,
-        picName: "",
+        picName: "assets/irredescent-trainer.jpeg",
     },
     {
-        name: "Product5",
+        name: "Ethereal Hi",
         price: 55.00,
-        picName: "",
+        picName: "assets/ethereal-hi-top.jpeg",
     },
     {
         name: "Product6",
@@ -52,11 +52,22 @@ let products = [
         price: 12.00,
         picName: "",
     },
+    {
+        name: "Product11",
+        price: 12.00,
+        picName: "",
+    },
+    {
+        name: "Product12",
+        price: 12.00,
+        picName: "",
+    },
 ];
 
 let cart = [];
 let cashCheckout = [];
 let creditCheckout = [];
+let receiptArray = [];
 
 let productContainer = document.querySelector(".main-item-container");
 
@@ -71,9 +82,11 @@ let display = () => {
         name.innerText = item.name;
         let price = document.createElement("p");
         price.innerText = item.price;
-        let picName = document.createElement("img")
+        let picName = document.createElement("img");
+        picName.classList.add("product-pic");
+        picName.setAttribute("style", "width=150px")
         let addToCart = document.createElement("button");
-        addToCart.innerText = "Add To Cart";
+        addToCart.innerText = "add to cart";
         addToCart.classList.add("add");
         addToCart.setAttribute("data-index", index);
         // will work here//
@@ -102,6 +115,12 @@ let taxCashP = document.querySelector(".tax-cash-p");
 let totalCashP = document.querySelector(".total-cash-p");
 let changeCashP = document.querySelector(".change-cash-p");
 let cashPaymentForm = document.querySelector(".cash-payment-form");
+let receiptButton = document.querySelector(".receipt-button")
+let receiptButtonCredit = document.querySelector(".receipt-button-credit")
+let receiptContainer = document.querySelector(".receipt-container")
+let receiptItems = document.querySelector(".receipt-items")
+let changeReceiptP = document.querySelector(".change-receipt-p")
+
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
@@ -114,7 +133,9 @@ let cartDisplay = () => {
         let itemPrice = document.createElement("p");
         itemPrice.innerText = item.price;
         let itemPicName = document.createElement("img");
+        itemPicName.classList.add("product-pic");
         itemPicName.setAttribute("src", item.picName)
+        itemPicName.setAttribute("style", "width=10px")
         let deleteButton = document.createElement("button");
         deleteButton.innerText = "X";
         deleteButton.classList.add("delete");
@@ -134,7 +155,7 @@ let cartDisplay = () => {
     total = subtotal += tax;
     totalP.innerText = `total:$${total}`;
     totalCashP.innerText = `total:$${total}`;
-
+    
 
 };
 
@@ -147,7 +168,9 @@ productContainer.addEventListener("click", (e) => {
         cart.push(products[index]);
         cashCheckout.push(products[index]);
         creditCheckout.push(products[index]);
+        receiptArray.push(products[index]);
         console.log(cart);
+
         cartDisplay();
     }
 });
@@ -166,6 +189,7 @@ let creditCheckoutDisplay = () => {
     closeFormBtn.innerText = "X";
     closeFormBtn.classList.add("close-form")
     formContainer.append(closeFormBtn);
+    
 }
 
 
@@ -190,9 +214,24 @@ let cashCheckoutDisplay = () => {
     cashContainer.append(closeFormBtn);
 };
 
-// document.getElementsByClassName(“total-cash-p”).value = 
 
-cashPaymentForm.addEventListener("submit", (e) => {
+let receiptDisplay = () => {
+    receiptArray.forEach((item) =>{
+        let receiptName = document.createElement("p");
+        receiptName.innerText = item.name;
+        let receiptPrice = document.createElement("p");
+        receiptPrice = item.price;
+        receiptItems.append(receiptName, receiptPrice);
+        // moneyForm.append(receiptItems);
+    })
+    let closeFormBtn = document.createElement("button")
+    closeFormBtn.innerText = "X";
+    closeFormBtn.classList.add("close-form")
+    receiptContainer.append(closeFormBtn);
+}
+
+
+main.addEventListener("submit", (e) => {
     e.preventDefault();
     let snapshot = new FormData(cashPaymentForm);
     let amountTendered = snapshot.get("cash-amount");
@@ -203,10 +242,17 @@ cashPaymentForm.addEventListener("submit", (e) => {
     let change = amountTendered - totalCashNum;
 
     changeCashP.innerText = `Change: $${change}`;
-
-
+    changeReceiptP.innerText = `Change: $${change}`;
+    receiptButton.classList.remove("hide");
+    receiptButtonCredit.classList.remove("hide");
 });
 
+// receiptButton.addEventListener("click", (e)=>{
+//     cashContainer.classList.add("hide");
+
+//     receiptContainer.classList.remove("hide");
+//     receiptDisplay();
+// })
 
 
 
@@ -214,6 +260,8 @@ sideNav.addEventListener("click", (e) => {
     if (e.target.classList.contains("delete")) {
         let index = e.target.getAttribute("data-index");
         cart.splice(index, 1);
+        creditCheckout.splice(index, 1);
+        cashCheckout.splice(index, 1);
         console.log(cart);
         cartDisplay();
     } else if (e.target.classList.contains("credit")) {
@@ -233,6 +281,15 @@ main.addEventListener("click", (e) => {
     if (e.target.classList.contains("close-form")) {
         formContainer.classList.add("hide")
         cashContainer.classList.add("hide")
+    } else if(e.target.classList.contains("receipt-button-credit" )){
+        
+        formContainer.classList.add("hide");
+        receiptContainer.classList.remove("hide");
+        receiptDisplay();
+    }else if(e.target.classList.contains("receipt-button" )){
+        cashContainer.classList.add("hide");
+        receiptContainer.classList.remove("hide");
+        receiptDisplay();
     }
 })
 
@@ -240,6 +297,17 @@ main.addEventListener("click", (e) => {
 
 
 //sidenav Cart
+
+//experimenting with animation--when you click add to cart, cart icon wiggles
+wiggleCart = document.getElementById("header-cart")
+
+wiggleCart.addEventListener("click", function(e){
+    if(e.target.classList.contains("add"))
+    e.preventDefault;
+    wiggleCart.classList.remove("wiggle")
+    void wiggleCart.OffsetWidth;
+    wiggleCart.classList.add("wiggle")
+})
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
