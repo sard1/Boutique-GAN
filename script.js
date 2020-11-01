@@ -13,9 +13,14 @@ let products = [
         picName: "assets/pearlish-reversi.jpeg",
     },
     {
-        name: "Crawling Oceans",
+        name: "Crawling Ocean",
         price: 75.00,
         picName: "assets/crawling-oceans.jpeg",
+    },
+    {
+        name: "Snake Plissken",
+        price: 240.00,
+        picName: "assets/snake-plissken.jpeg",
     },
     {
         name: "Irredescent Trainer",
@@ -28,40 +33,37 @@ let products = [
         picName: "assets/ethereal-hi-top.jpeg",
     },
     {
-        name: "Product6",
+        name: "Chem'd Out",
         price: 45.00,
-        picName: "",
+        picName: "assets/chemd-out.jpeg",
     },
     {
-        name: "Product7",
+        name: "Void Runner",
+        price: 12.00,
+        picName: "assets/void-runner.jpeg",
+    },
+    {
+        name: "Jupiter Biscuit",
         price: 200.00,
-        picName: "",
+        picName: "assets/jupiter-biscuit.jpeg",
     },
     {
-        name: "Product8",
+        name: "OK Computer",
         price: 25.00,
-        picName: "",
+        picName: "assets/ok-computer.jpeg",
     },
     {
-        name: "Product9",
+        name: "Aurora Trainer",
         price: 80.00,
-        picName: "",
+        picName: "assets/aurora-trainer.jpeg",
     },
+   
     {
-        name: "Product10",
-        price: 12.00,
-        picName: "",
+        name: "Void Stares Back",
+        price: 666.00,
+        picName: "assets/void-stares-back.jpeg",
     },
-    {
-        name: "Product11",
-        price: 12.00,
-        picName: "",
-    },
-    {
-        name: "Product12",
-        price: 12.00,
-        picName: "",
-    },
+    
 ];
 
 let cart = [];
