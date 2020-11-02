@@ -215,7 +215,7 @@ productContainer.addEventListener("click", (e) => {
 
 
 let creditCheckoutDisplay = () => {
-    
+    creditItemContainer.innerHTML="";
     creditCheckout.forEach((item) => {
         let creditName = document.createElement("p");
         creditName.innerText = item.name;
@@ -228,9 +228,9 @@ let creditCheckoutDisplay = () => {
 
 
 let cashCheckoutDisplay = () => {
-    //cashContainer.innerHTML = "";
-    
+    cashTotal.innerHTML = "";
     cashCheckout.forEach((item) => {
+        
         let cashPrice = document.createElement("p")
         cashPrice = item.price;
         let cashName = document.createElement("p");

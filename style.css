@@ -39,7 +39,7 @@ body {
   text-align: center;
   margin: 70px 0px 40px 0px;
   font-family: "Cutive Mono", monospace;
-  transition: all 0.5s ease-in-out;
+  transition: all 2s ease-in-out;
 }
 
 .header2 {
@@ -47,6 +47,7 @@ body {
 }
 
 .header1:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .head-container {
@@ -194,6 +195,13 @@ body {
   left: 70%;
   bottom: 85%;
   border: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.close-form:hover {
+  color: black;
 }
 
 .delete:hover {
@@ -212,7 +220,7 @@ body {
 
 .money-form {
   font-family: "Cutive Mono", monospace;
-  background-color: white;
+  background-color: rgb(142, 173, 207);
   width: 50%;
   height: 75%;
   display: flex;
@@ -232,6 +240,7 @@ body {
   justify-content: center;
   border-radius: 10%;
   padding: 20px;
+  color: white;
 }
 
 .popup-div {
@@ -253,6 +262,10 @@ body {
 #expiration {
   padding: 8px;
 }
+
+.cash-checkout {
+  color: white;
+}
 .cash-container {
   display: flex;
   justify-content: center;
@@ -260,17 +273,43 @@ body {
   background-color: rgba(128, 128, 128, 0.63);
   width: 100%;
   height: 100%;
+  color: white;
+}
+
+.cash-inner-div {
+  justify-content: space-around;
+  width: 75%;
+  color: white;
+  min-height: 0px;
+  overflow: hidden;
+}
+
+.cash-total {
+  max-height: 50%;
+  overflow: auto;
+  border: 1px gray dotted;
+  color: white;
+}
+.cash-stp {
+  max-height: 50%;
+  overflow: auto;
+  border: 1px gray dotted;
+  color: white;
 }
 
 .credit-inner-div {
   justify-content: space-around;
   width: 75%;
+  color: white;
+  min-height: 0px;
+  overflow: hidden;
 }
 
 .credit-item-container {
   max-height: 50%;
   overflow: auto;
   border: 1px gray dotted;
+  color: white;
 }
 
 .cstp-div {
@@ -283,6 +322,7 @@ body {
 
 .receipt-box {
   border: dotted 1px black;
+  background-color: white;
 }
 
 /* .receipt-div {
@@ -300,7 +340,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 480px;
+  max-height: 300px;
   overflow: auto;
 }
 
@@ -332,14 +372,14 @@ body {
 .foot-right {
   float: right;
   display: block;
-  padding: 0px 15px;
+  padding: 0px 5px;
   font-size: 12px;
 }
 
 .foot-left {
   float: left;
   display: block;
-  padding: 0px 15px;
+  padding: 0px 5px;
   font-size: 12px;
 }
 
