@@ -1,9 +1,9 @@
 /* resets */
-p{
+p {
   padding: 2px;
   margin: 2px;
+  /* text-align: center; */
 }
-
 
 body {
   margin: 0;
@@ -18,12 +18,12 @@ body {
   margin: 10px 0px;
 }
 
-.main1{
+.main1 {
   display: flex;
 }
 
 .side-nav-icons {
-  height: 30px;
+  height: 50px;
 }
 
 .header {
@@ -37,8 +37,16 @@ body {
 
 .header1 {
   text-align: center;
-  margin: 70px 50px;
+  margin: 70px 0px 40px 0px;
   font-family: "Cutive Mono", monospace;
+  transition: all 0.5s ease-in-out;
+}
+
+.header2 {
+  position: fixed;
+}
+
+.header1:hover {
 }
 
 .head-container {
@@ -56,15 +64,9 @@ body {
   /* max-width: 1000px; */
 }
 
-.page-container{
+.page-container {
   max-width: 1000px;
   margin: auto;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center; */
-
 }
 
 .optionStyle {
@@ -81,11 +83,17 @@ body {
   justify-content: center;
   z-index: 0;
   border-radius: 2%;
-  margin-bottom: 20px;
+  margin: 0px 10px 20px 10px;
+  font-size: 18px;
 }
 
-.optionStyle:hover{
+.description {
+  font-size: 12px;
+}
+
+.optionStyle:hover {
   border: 1px solid black;
+  transition: all 0.2s ease-in-out;
 }
 
 .product-pic {
@@ -94,9 +102,8 @@ body {
   border-radius: 20px;
 }
 
-.cart-style{
+.cart-style {
   color: white;
- 
 }
 
 @keyframes fadeInAnimation {
@@ -126,9 +133,9 @@ body {
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 8px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 30px;
   color: black;
   display: block;
   transition: 0.3s;
@@ -142,14 +149,20 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 36px;
+  font-size: 50px;
   margin-right: 20px;
+}
+
+.checkout-options {
+  display: flex;
+  justify-content: space-around;
 }
 
 .popup {
   position: fixed;
   width: 100%;
   top: 0;
+  left: 0;
   display: flex;
   z-index: 4;
 }
@@ -158,7 +171,13 @@ body {
   border: none;
   text-decoration: none;
   font-family: "Cutive Mono", monospace;
-  font-size: 10px;
+  font-size: 12px;
+  padding: 10px 0px;
+  transition: all 0.2s ease-in-out;
+}
+
+.add:hover {
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .delete {
@@ -166,7 +185,21 @@ body {
   text-decoration: none;
   background: none;
   font-size: 18px;
+  transition: 0.3s;
 }
+
+.close-form {
+  background: none;
+  position: absolute;
+  left: 70%;
+  bottom: 85%;
+  border: none;
+}
+
+.delete:hover {
+  color: #f1f1f1;
+}
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -178,6 +211,30 @@ body {
 }
 
 .money-form {
+  font-family: "Cutive Mono", monospace;
+  background-color: white;
+  width: 50%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  padding: 20px;
+  overflow: auto;
+}
+
+.form-form {
+  font-family: "Cutive Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  padding: 20px;
+}
+
+.popup-div {
   background-color: white;
   width: 50%;
   height: 50%;
@@ -189,6 +246,13 @@ body {
   padding: 20px;
 }
 
+.button-style {
+  font-family: "Cutive Mono", monospace;
+}
+
+#expiration {
+  padding: 8px;
+}
 .cash-container {
   display: flex;
   justify-content: center;
@@ -198,9 +262,29 @@ body {
   height: 100%;
 }
 
-.credit-item-container {
-  overflow: scroll;
+.credit-inner-div {
+  justify-content: space-around;
+  width: 75%;
 }
+
+.credit-item-container {
+  max-height: 50%;
+  overflow: auto;
+  border: 1px gray dotted;
+}
+
+.cstp-div {
+  max-height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px gray dotted;
+}
+
+.receipt-box {
+  border: dotted 1px black;
+}
+
 /* .receipt-div {
   background-color: white;
   width: 50%;
@@ -212,38 +296,25 @@ body {
   border-radius: 25%;
 } */
 
-.cart-container{
+.cart-container {
   display: flex;
- flex-direction: column;
- align-items:center;
+  flex-direction: column;
+  align-items: center;
+  max-height: 480px;
+  overflow: auto;
+}
+
+.cart-container::-webkit-scrollbar-track {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  padding: 2px 0;
+  background-color: rgb(142, 173, 207);
 }
 
 .hide {
   display: none;
-}
-
-@keyframes wiggle {
-  0% {
-    transform: rotate(0deg);
-  }
-  80% {
-    transform: rotate(0deg);
-  }
-  85% {
-    transform: rotate(5deg);
-  }
-  95% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-#wiggle {
-  display: inline-block;
-  animation: wiggle 1s;
-  animation-iteration-count: 1;
+  transition: all 0.2s ease-in-out;
 }
 
 .fixed-footer {
@@ -272,8 +343,7 @@ body {
   font-size: 12px;
 }
 
-
-
+/* 
 @media screen and (max-width: 768px) {
   .sidenav {
     padding-top: 15px;
@@ -281,4 +351,4 @@ body {
   .sidenav a {
     font-size: 18px;
   }
-}
+} */

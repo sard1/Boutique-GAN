@@ -4,63 +4,75 @@
 let products = [
     {
         name: "Ripple Gator",
-        price: 150.00,
+        price: 220.00,
+        desc: "\"florida without the man\"",
         picName: "assets/ripple-gator.jpeg",
     },
     {
         name: "Pearlish Reversi",
-        price: 50.00,
+        price: 280.00,
+        desc: "\"be the diver\"",
         picName: "assets/pearlish-reversi.jpeg",
     },
     {
         name: "Crawling Ocean",
-        price: 75.00,
+        price: 370.00,
+        desc: "\"see you on the beach\"",
         picName: "assets/crawling-oceans.jpeg",
     },
     {
-        name: "Snake Plissken",
+        name: "Iroquois Pliskin",
         price: 240.00,
+        desc: "\"call me Snake\"",
         picName: "assets/snake-plissken.jpeg",
     },
     {
-        name: "Irredescent Trainer",
-        price: 100.00,
+        name: "Irredescent Shock",
+        price: 210.00,
+        desc: "\"race to the finish\"",
         picName: "assets/irredescent-trainer.jpeg",
+    },
+    
+    {
+        name: "Aurora Trainer",
+        price: 180.00,
+        desc: "\"can I see it?\"\"...no.\"",
+        picName: "assets/aurora-trainer.jpeg",
+    },
+    {
+        name: "OK Computer",
+        price: 425.00,
+        desc: "\"...we're that band...\"",
+        picName: "assets/ok-computer.jpeg",
     },
     {
         name: "Ethereal Hi",
-        price: 55.00,
+        price: 155.00,
+        desc: "\"on it, not of it\"",
         picName: "assets/ethereal-hi-top.jpeg",
     },
     {
-        name: "Chem'd Out",
-        price: 45.00,
+        name: "Chem Doctor",
+        price: 245.00,
+        desc: "\"prepare for fallout\"",
         picName: "assets/chemd-out.jpeg",
     },
     {
-        name: "Void Runner",
-        price: 12.00,
+        name: "Null Runner",
+        price: 333.00,
+        desc: "\"this is the exit\"",
         picName: "assets/void-runner.jpeg",
     },
     {
         name: "Jupiter Biscuit",
         price: 200.00,
+        desc: "\"the gravy's on Europa\"",
         picName: "assets/jupiter-biscuit.jpeg",
-    },
-    {
-        name: "OK Computer",
-        price: 25.00,
-        picName: "assets/ok-computer.jpeg",
-    },
-    {
-        name: "Aurora Trainer",
-        price: 80.00,
-        picName: "assets/aurora-trainer.jpeg",
-    },
-   
+    },   
     {
         name: "Void Stares Back",
         price: 666.00,
+        desc: "\"don't look too hard...\"",
         picName: "assets/void-stares-back.jpeg",
     },
     
@@ -80,6 +92,9 @@ let display = () => {
         let option = document.createElement("div");
         option.classList.add("option");
         option.setAttribute("class", "optionStyle")
+        let desc = document.createElement("p");
+        desc.classList.add("description")
+        desc.innerText = item.desc;
         let name = document.createElement("p");
         name.innerText = item.name;
         let price = document.createElement("p");
@@ -94,7 +109,7 @@ let display = () => {
         // will work here//
         picName.setAttribute("src", item.picName)
 
-        option.append(picName, name, price, addToCart);
+        option.append(picName, name, desc, price, addToCart);
         productContainer.append(option);
     });
 };
@@ -106,10 +121,12 @@ let subtotalP = document.querySelector(".subtotal-p")
 let taxP = document.querySelector(".tax-p");
 let totalP = document.querySelector(".total-p")
 let formContainer = document.querySelector(".form-container");
+let popupDiv = document.querySelector(".popup-div");
 let moneyForm = document.querySelector(".money-form");
 let sideNav = document.querySelector(".sidenav");
 let cashContainer = document.querySelector(".cash-container");
 let creditItemContainer = document.querySelector(".credit-item-container")
+let cardAccepted = document.querySelector(".card-accepted")
 let main = document.querySelector(".main1")
 let cashTotal = document.querySelector(".cash-total")
 let subtotalCashP = document.querySelector(".subtotal-cash-p")
@@ -125,6 +142,13 @@ let changeReceiptP = document.querySelector(".change-receipt-p")
 let stp = document.querySelector(".stp")
 let stp1 = document.querySelector(".stp1")
 let stp2 = document.querySelector(".stp2")
+let cstp = document.querySelector(".cstp")
+let cstp1 = document.querySelector(".cstp1")
+let cstp2 = document.querySelector(".cstp2")
+let rstp = document.querySelector(".rstp")
+let rstp1 = document.querySelector(".rstp1")
+let rstp2 = document.querySelector(".rstp2")
+
 
 let cartDisplay = () => {
     cartContainer.innerHTML = "";
@@ -142,27 +166,36 @@ let cartDisplay = () => {
         itemPicName.setAttribute("src", item.picName)
         itemPicName.setAttribute("style", "width=10px")
         let deleteButton = document.createElement("button");
-        deleteButton.innerText = "X";
+        deleteButton.innerText = "x";
         deleteButton.classList.add("delete");
         deleteButton.setAttribute("data-index", index);
-        itemContainer.append(itemName, itemPrice, itemPicName, deleteButton);
+        itemContainer.append(itemPicName, deleteButton, itemName, itemPrice, );
         cartContainer.append(itemContainer);
 
         subtotal += item.price;
     });
 
-    let total = 0.00;
+   
     let tax = subtotal * .06;
-    subtotalP.innerText = `subtotal:$${subtotal}`;
-    taxP.innerText = `tax:$${tax}`;
-    total = subtotal += tax;
-    totalP.innerText = `total:$${total}`;
+    let total = subtotal + tax;
+    
+    console.log(total);
+    //subtotalP.innerText = `subtotal:$${subtotal}`;
+    //taxP.innerText = `tax:$${tax}`;
+   
+    //totalP.innerText = `total:$${total}`;
     subtotalCashP.innerText = `subtotal:$${subtotal}`;
-    taxCashP.innerText = `tax:$${tax}`;
-    totalCashP.innerText = `total:$${total}`;
+    taxCashP.innerText = `tax:$${tax.toFixed(2)}`;
+    totalCashP.innerText = `total:$${total.toFixed(2)}`;
+    cstp.innerText = `subtotal:$${subtotal}`;
+    cstp1.innerText = `tax:$${tax.toFixed(2)}`;
+    cstp2.innerText = `total:$${total.toFixed(2)}`;
     stp.innerText= `subtotal:$${subtotal}`;
-    stp1.innerText= `tax:$ ${tax}`;
-    stp2.innerText= `total:$ ${total}`;
+    stp1.innerText= `tax:$${tax.toFixed(2)}`;
+    stp2.innerText= `total:$${total.toFixed(2)}`;
+    rstp.innerText = `subtotal:$${subtotal}`;
+    rstp1.innerText = `tax:$${tax.toFixed(2)}`;
+    rstp2.innerText = `total:$${total.toFixed(2)}`;
 };
 
 
@@ -176,14 +209,13 @@ productContainer.addEventListener("click", (e) => {
         creditCheckout.push(products[index]);
         receiptArray.push(products[index]);
         console.log(cart);
-
         cartDisplay();
     }
 });
 
 
 let creditCheckoutDisplay = () => {
-    formContainer.classList.remove("hide")
+    
     creditCheckout.forEach((item) => {
         let creditName = document.createElement("p");
         creditName.innerText = item.name;
@@ -197,7 +229,7 @@ let creditCheckoutDisplay = () => {
 
 let cashCheckoutDisplay = () => {
     //cashContainer.innerHTML = "";
-    cashContainer.classList.remove("hide")
+    
     cashCheckout.forEach((item) => {
         let cashPrice = document.createElement("p")
         cashPrice = item.price;
@@ -221,13 +253,10 @@ let receiptDisplay = () => {
         receiptItems.append(receiptName, receiptPrice);
         // moneyForm.append(receiptItems);
     })
-    // let closeFormBtn = document.createElement("button")
-    // closeFormBtn.innerText = "X";
-    // closeFormBtn.classList.add("close-form")
-    // receiptContainer.append(closeFormBtn);
+
 }
 
-
+creditCheckoutDisplay();
 main.addEventListener("submit", (e) => {
     e.preventDefault();
     let snapshot = new FormData(cashPaymentForm);
@@ -241,6 +270,7 @@ main.addEventListener("submit", (e) => {
     changeReceiptP.innerText = `Change: $${change}`;
     receiptButton.classList.remove("hide");
     receiptButtonCredit.classList.remove("hide");
+    cardAccepted.classList.remove("hide");
 });
 
 // receiptButton.addEventListener("click", (e)=>{
@@ -262,9 +292,11 @@ sideNav.addEventListener("click", (e) => {
         cartDisplay();
     } else if (e.target.classList.contains("credit")) {
         closeNav();
+        formContainer.classList.remove("hide")
         creditCheckoutDisplay();
         console.log(creditCheckout);
     } else if (e.target.classList.contains("cash")) {
+        cashContainer.classList.remove("hide")
         // let index = e.target.getAttribute("data-index");
         // cashCheckout.push(products[index]);
         closeNav();
@@ -277,7 +309,7 @@ function refreshPage(){
     window.location.reload();
 }
 
-
+//hide
 main.addEventListener("click", (e) => {
     if(e.target.classList.contains("refresh-page")){
         refreshPage();
@@ -293,10 +325,9 @@ main.addEventListener("click", (e) => {
     }else if(e.target.classList.contains("receipt-button" )){
         cashContainer.classList.add("hide");
         receiptContainer.classList.remove("hide");
-        receiptDisplay();
-    }else if(e.target.classList.contains("refresh-page")){
-        refreshPage();
+        receiptDisplay();    
     }
+    
 })
 
 

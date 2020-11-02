@@ -28,76 +28,99 @@
     <button class="cart hide"></button>
     <main class="main1">
       <div class="page-container">
-      <h1 class="header1">"freshly generated"</h1>
-      <div class="main-item-container"></div>
-      <div class="form-container hide popup">
-        <form class="money-form">
-          <h2>CREDIT CHECKOUT</h2>
-          <div class="credit-item-container"></div>
-          <label for="Name">Name</label>
-          <input type="text" name="name" id="name" placeholder="Full Name" />
-          <label for="card">CC #</label>
-          <input type="number" name="card" id="card" placeholder="CC #" />
-          <label for="expiration">Exp. Date</label>
-          <input type="date" name="expiration" id="expiration" />
-          <label for="cvv">CVV</label>
-          <input type="number" name="cvv" id="cvv" placeholder="CVV" />
-          <button>Submit</button>
-          <button class="hide receipt-button-credit">Receipt</button>
-        </form>
-         <button class = "close-form">X</button>
-      </div>
-      <div class="cash-container hide popup">
-        <div class="cash-form money-form">
-          <h2>CASH CHECKOUT</h2>
-          <div class="cash-total"></div>
-          <p class="subtotal-cash-p">subtotal:</p>
-          <p class="tax-cash-p">tax:</p>
-          <p class="total-cash-p" id="tcp">total:</p>
-          <form class="cash-payment-form">
-            <label for="cash-amount">Enter Cash:</label>
-            <input
-              type="input"
-              name="cash-amount"
-              id="cash-amount"
-              placeholder="Amount Tendered"
-            />
-            <p class="change-cash-p">change:</p>
-            <button>Calculate</button>
-            <button class="hide receipt-button">Receipt</button>
-          </form>
-         
+        <h1 class="header1">"freshly generated"</h1>
+        <div class="main-item-container"></div>
+        <div class="form-container hide popup">
+          <div class="money-form">
+            <h2>CREDIT CHECKOUT</h2>
+            <div class="credit-inner-div">
+              <div class="credit-item-container"></div>
+              <div class="cstp-div">
+                <p class="cstp"></p>
+                <p class="cstp1"></p>
+                <p class="cstp2"></p>
+              </div>
+            </div>
+            <form class="form-form">
+              <label for="Name">Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Full Name"
+              />
+              <label for="card">CC #</label>
+              <input type="number" name="card" id="card" placeholder="CC #" />
+              <label for="expiration">Exp. Date</label>
+              <input type="date" name="expiration" id="expiration" />
+              <label for="cvv">CVV</label>
+              <input type="number" name="cvv" id="cvv" placeholder="CVV" />
+              <button class="button-style">Submit</button>
+              <p class="card-accepted hide">Card Accepted!</p>
+              <button class="hide receipt-button-credit button-style">
+                Receipt
+              </button>
+            </form>
+            <button class="close-form">x</button>
+          </div>
         </div>
-         <button class = "close-form">X</button>
-      </div>
-      <div class="receipt-container form-container hide popup">
-        <div class="money-form">
-         <div class="receipt-items"></div>
-          <p class="subtotal-p"></p>
-          <p class="tax-p"></p>
-          <p class="total-p"></p>
-          <p class="change-receipt-p"></p>
+        <div class="cash-container hide popup">
+          <div class="cash-form money-form">
+            <h2 class="cash-checkout">CASH CHECKOUT</h2>
+            <div class="cash-total"></div>
+            <p class="subtotal-cash-p">subtotal:</p>
+            <p class="tax-cash-p">tax:</p>
+            <p class="total-cash-p" id="tcp">total:</p>
+            <form class="cash-payment-form">
+              <label for="cash-amount">Enter Cash:</label>
+              <input
+                type="input"
+                name="cash-amount"
+                id="cash-amount"
+                placeholder="Amount Tendered"
+              />
+              <p class="change-cash-p">change:</p>
+              <button class="button-style">Calculate</button>
+              <button class="hide receipt-button button-style">Receipt</button>
+            </form>
+          </div>
+          <button class="close-form">X</button>
         </div>
-        <button class = "close-form refresh-page">X</button>
+        <div class="receipt-container form-container hide popup">
+          <div class="money-form">
+            <div class="receipt-box money-form">
+              <h2>thank you!</h2>
+              <h4>items:</h4>
+              <div class="receipt-items"></div>
+              <div class="cstp-div">
+                <p class="rstp"></p>
+                <p class="rstp1"></p>
+                <p class="rstp2"></p>
+                <p class="change-receipt-p"></p>
+              </div>
+            </div>
+          </div>
+          <button class="close-form refresh-page">X</button>
+        </div>
+        <div id="mySidenav" class="sidenav">
+          <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+
+          <div class="cart-container"></div>
+
+          <p class="subtotal-p stp">subtotal:</p>
+          <p class="tax-p stp1">tax:</p>
+          <p class="total-p stp2">total:</p>
+          <h3>checkout with:</h3>
+          <div class=checkout-options>
+          <img
+            class="side-nav-icons credit"
+            src="assets/creditt.svg"
+            alt="creditcard"
+          />
+          <p>or</p>
+          <img class="side-nav-icons cash" src="assets/cashh.svg" alt="cash" />
+        </div>
       </div>
-      <div id="mySidenav" class="sidenav">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-
-        <div class="cart-container"></div>
-
-        <p class="subtotal-p stp">subtotal:</p>
-        <p class="tax-p stp1">tax:</p>
-        <p class="total-p stp2">total:</p>
-
-        <img
-          class="side-nav-icons credit"
-          src="assets/credit_card.svg"
-          alt="creditcard"
-        />
-        <p>or</p>
-        <img class="side-nav-icons cash" src="assets/cash.svg" alt="cash" />
-      </div>
-      </div>  
     </main>
     <footer class="fixed-footer">
       <div class="foot-left">
