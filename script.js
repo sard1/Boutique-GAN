@@ -256,7 +256,7 @@ let receiptDisplay = () => {
 
 }
 
-creditCheckoutDisplay();
+
 main.addEventListener("submit", (e) => {
     e.preventDefault();
     let snapshot = new FormData(cashPaymentForm);

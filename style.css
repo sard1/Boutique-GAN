@@ -8,6 +8,28 @@ p {
 body {
   margin: 0;
   padding: 0;
+  /* background concept by Manuel Pinto */
+  background: linear-gradient(
+    -45deg,
+    rgb(142, 173, 207),
+    #eeeeee,
+    #23a6d5,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .header-items {
@@ -29,10 +51,19 @@ body {
 .header {
   position: fixed;
   width: 100%;
-  background-color: rgb(142, 173, 207);
+  background-color: transparent;
   color: black;
   top: 0;
   z-index: 3;
+  border-bottom: black solid 0.5px;
+  background: linear-gradient(
+    -45deg,
+    rgb(142, 173, 207),
+    #23a6d5,
+    rgb(161, 196, 202)
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 .header1 {
@@ -83,7 +114,7 @@ body {
   align-content: center;
   justify-content: center;
   z-index: 0;
-  border-radius: 2%;
+  border-radius: 21px 21px 0px 0px;
   margin: 0px 10px 20px 10px;
   font-size: 18px;
 }
@@ -131,6 +162,7 @@ body {
   transition: 0.5s;
   padding-top: 60px;
   font-family: "Cutive Mono", monospace;
+  border-left: 1px white solid;
 }
 
 .sidenav a {
