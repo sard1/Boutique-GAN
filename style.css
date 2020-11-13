@@ -1,4 +1,12 @@
 /* resets */
+
+/* TO-DO
+-smooth animations and transitions between cart/credit/cash/receipt windows
+-more/different hover animations on cards
+-animation on cart icon when adding item to cart
+-make sure sidenav cart works well on mobile -- use media query to change height of item-container
+-refine logo a bit */
+
 p {
   padding: 2px;
   margin: 2px;
@@ -157,12 +165,21 @@ body {
   right: 0;
   display: flex;
   flex-direction: column;
-  background-color: rgb(142, 173, 207);
+
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
   font-family: "Cutive Mono", monospace;
   border-left: 1px white solid;
+  background: linear-gradient(
+    -45deg,
+    rgb(142, 173, 207),
+    #eeeeee,
+    #23a6d5,
+    #23d5ab
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 .sidenav a {
@@ -252,7 +269,6 @@ body {
 
 .money-form {
   font-family: "Cutive Mono", monospace;
-  background-color: rgb(142, 173, 207);
   width: 50%;
   height: 75%;
   display: flex;
@@ -262,6 +278,9 @@ body {
   border-radius: 10%;
   padding: 20px;
   overflow: auto;
+  background: linear-gradient(-45deg, rgb(142, 173, 207), #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 .form-form {
