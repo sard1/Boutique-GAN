@@ -1,4 +1,4 @@
-# JSGroupProject1
+# boutique gan
 
 Welcome to Boutique GAN, an AI-assisted ethereal streetwear storefront. 
 
