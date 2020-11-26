@@ -1,5 +1,7 @@
 # boutique gan
 
+https://sard1.github.io/Boutique-GAN/
+
 Welcome to Boutique GAN, an AI-assisted ethereal streetwear storefront. 
 
 Using the popular image neural network ArtBreeder and four popular shoe styles, we designed footwear for all styles and situations. 
